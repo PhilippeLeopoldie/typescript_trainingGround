@@ -1,7 +1,7 @@
 import 'mocha' ;
 import assert from 'assert';
 
-import { greet, isOld } from './index';
+import { greet, isOld, countOdd, sumEven } from './index';
 
 describe('ts tests', () => {
   it('get greeting', () => {
@@ -41,5 +41,26 @@ describe('ts tests', () => {
     assert.strictEqual(typeof(name),'string');
     assert.strictEqual(typeof(nameImplicit), 'string');
     assert.strictEqual(typeof(nameImplicit2), 'string');
+  });
+  it('count odd numbers', () => {
+    // arrange
+    const firstFive = [1,2,3,4,5];
+
+    // act
+    const numberOfOdds = countOdd(firstFive);
+
+    // arrange
+    assert.strictEqual(numberOfOdds, 3);
+  });
+
+  it('sum even numbers', () => {
+    // arrange
+    const nums = [1,2,3,4,5,6,7,8,9,10];
+
+    // act
+    const sum = sumEven(nums);
+
+    // assert
+    assert.strictEqual(sum, 30);
   });
 });
