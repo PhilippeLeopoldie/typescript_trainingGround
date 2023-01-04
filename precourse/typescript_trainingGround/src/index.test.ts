@@ -1,7 +1,7 @@
 import 'mocha' ;
 import assert from 'assert';
 
-import { greet, isOld, countOdd, sumEven } from './index';
+import { greet, isOld, countOdd, sumEven, Person, Address, getPersonStreetNo } from './index';
 
 describe('ts tests', () => {
   it('get greeting', () => {
@@ -45,10 +45,8 @@ describe('ts tests', () => {
   it('count odd numbers', () => {
     // arrange
     const firstFive = [1,2,3,4,5];
-
     // act
     const numberOfOdds = countOdd(firstFive);
-
     // arrange
     assert.strictEqual(numberOfOdds, 3);
   });
@@ -56,11 +54,26 @@ describe('ts tests', () => {
   it('sum even numbers', () => {
     // arrange
     const nums = [1,2,3,4,5,6,7,8,9,10];
-
     // act
     const sum = sumEven(nums);
-
     // assert
     assert.strictEqual(sum, 30);
+  });
+  it('gets the street number for a person', () =>{
+    // arrange
+    const p : Person = {
+      name : 'Marcus',
+      birthYear : 1972,
+      address : {
+        street: 'Stralgatan',
+        streetNo: 23,
+        city: 'Stockholm',
+      }
+    }
+      // act
+      const streetNo = getPersonStreetNo(p);
+
+      // assert
+      assert.strictEqual(streetNo, 23);
   });
 });
