@@ -48,11 +48,11 @@ class EmployeeC extends PersonC {
 console.log(e.getName());
 console.log(e.employeeId);*/
 
-interface Iperson {
+interface IPerson {
   name: string,
   birthYear: number,
 }
-const getPersonNameString = (person : Iperson ) =>`${person.name}, ${person.birthYear.toString()}`; 
+const getPersonNameString = (person : IPerson ) =>`${person.name}, ${person.birthYear.toString()}`; 
 
 const printThis = (p : Person | undefined |null) => {
   if(!p){return 'no person supplied'};
@@ -71,6 +71,24 @@ export const greetPeople = (greeting : string, ...names :string []) => {
   return `${greeting} ${names.join(' and ')}`.trim();
 }
 
+const addToStart = <T> (list : T [], itemToAdd: T) : T[] => {
+  return [itemToAdd, ...list];
+};
+class Wrapper<T> {
+  private list: T[];
+
+  constructor(list : T[]) {
+    this.list = list;
+  }
+
+  public getFirst() : T {
+    return this.list[0];
+  }
+  public getLast() : T {
+    return this.list[this.list.length-1];
+  }
+}
+
 
 
 export {
@@ -83,8 +101,10 @@ export {
   getPersonStreetNo,
   PersonC,
   EmployeeC,
-  Iperson,
+  IPerson,
   getPersonNameString,
   printThis,
-  optionallyAdd
+  optionallyAdd,
+  addToStart,
+  Wrapper,
 };
