@@ -59,6 +59,18 @@ const printThis = (p : Person | undefined |null) => {
   return p.name;
 }
 
+const optionallyAdd = (num1 : number, num2 : number, num3:number=0, num4:number=0, num5:number=0)=> {
+  let sum = num1 + num2;
+  if(num3){sum += num3;}
+  if(num4){sum += num4;}
+  /*sum += num5 ? num5 : 0;*/
+  num5? sum+=num5:0;
+  return sum;
+}
+export const greetPeople = (greeting : string, ...names :string []) => {
+  return `${greeting} ${names.join(' and ')}`.trim();
+}
+
 
 
 export {
@@ -74,4 +86,5 @@ export {
   Iperson,
   getPersonNameString,
   printThis,
+  optionallyAdd
 };

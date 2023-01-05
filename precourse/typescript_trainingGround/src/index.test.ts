@@ -14,6 +14,8 @@ import {
   Iperson, 
   getPersonNameString,
   printThis,
+  optionallyAdd,
+  greetPeople
  } from './index';
 
 describe('ts tests', () => {
@@ -123,5 +125,27 @@ describe('ts tests', () => {
     // assert
     assert.strictEqual(result1,'no person supplied');
     assert.strictEqual(result2,'no person supplied');
+  });
+  it('optional parameters', () => {
+    // act
+    const sum = optionallyAdd(1,2,3,4,5);
+
+    // assert
+    assert.strictEqual(sum, 15);
+  });
+  it('rest parameters - print names', () => {
+    // act
+    const greeting1 = greetPeople("Hello");
+    const greeting2 = greetPeople("Hello", "Marcus");
+    const greeting3 = greetPeople("Hello", "Marcus", "Dasha");
+    const greeting4 = greetPeople("Hello", "Marcus", "Dasha", "David");
+    const greeting5 = greetPeople("Hello", "Marcus", "Dasha", "David", "Julia", "Wietse", "Lucas");
+  
+    // assert
+  assert.strictEqual(greeting1, "Hello");
+  assert.strictEqual(greeting2, "Hello Marcus");
+  assert.strictEqual(greeting3, "Hello Marcus and Dasha");
+  assert.strictEqual(greeting4, "Hello Marcus and Dasha and David");
+  assert.strictEqual(greeting5, "Hello Marcus and Dasha and David and Julia and Wietse and Lucas")
   });
 });
