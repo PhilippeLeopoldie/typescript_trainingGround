@@ -1,7 +1,20 @@
 import 'mocha' ;
 import assert from 'assert';
 
-import { greet, isOld, countOdd, sumEven, Person, Address, getPersonStreetNo,PersonC, EmployeeC, Iperson, getPersonNameString } from './index';
+import { 
+  greet,
+  isOld,
+  countOdd, 
+  sumEven, 
+  Person, 
+  Address, 
+  getPersonStreetNo,
+  PersonC, 
+  EmployeeC, 
+  Iperson, 
+  getPersonNameString,
+  printThis,
+ } from './index';
 
 describe('ts tests', () => {
   it('get greeting', () => {
@@ -101,5 +114,14 @@ describe('ts tests', () => {
     // assert
     assert.strictEqual(p1Address, 'Marcus, 1972');
     assert.strictEqual(p2Address, 'David, 1975');
+  });
+  it('uses union types to allow null', () => {
+    // act
+    const result1 = printThis(undefined);
+    const result2 = printThis(null);
+
+    // assert
+    assert.strictEqual(result1,'no person supplied');
+    assert.strictEqual(result2,'no person supplied');
   });
 });

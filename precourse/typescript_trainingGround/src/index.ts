@@ -57,8 +57,11 @@ interface Iperson {
   birthYear: number,
 }
 function getPersonNameString(person : Iperson ) : string {
-  return `${person.name}, ${person.birthYear.toString()}`;
-  
+  return `${person.name}, ${person.birthYear.toString()}`; 
+}
+function printThis(p : Person | undefined |null) {
+  if(!p){return 'no person supplied'};
+  return p.name;
 }
 
 
@@ -74,5 +77,6 @@ export {
   PersonC,
   EmployeeC,
   Iperson,
-  getPersonNameString
+  getPersonNameString,
+  printThis,
 };

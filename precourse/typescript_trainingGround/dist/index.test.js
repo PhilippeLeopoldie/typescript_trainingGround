@@ -72,4 +72,26 @@ describe('ts tests', () => {
         // assert
         assert_1.default.strictEqual(streetNo, 23);
     });
+    it('using classes', () => {
+        //arrange
+        const p = new index_1.PersonC('Marcus', 1972);
+        const e = new index_1.EmployeeC('Marcus Employee', 1972);
+        // act
+        e.employeeId = 12345;
+        // assert
+        assert_1.default.strictEqual(p.getName(), 'Marcus');
+        assert_1.default.strictEqual(e.getName(), 'Marcus Employee');
+        assert_1.default.strictEqual(e.employeeId, 12345);
+    });
+    it('prints an IPerson', () => {
+        // arrange
+        const p1 = { name: 'Marcus', birthYear: 1972 };
+        const p2 = { name: 'David', birthYear: 1975, drummer: true };
+        // act
+        const p1Address = (0, index_1.getPersonNameString)(p1);
+        const p2Address = (0, index_1.getPersonNameString)(p2);
+        // assert
+        assert_1.default.strictEqual(p1Address, 'Marcus, 1972');
+        assert_1.default.strictEqual(p2Address, 'David, 1975');
+    });
 });
