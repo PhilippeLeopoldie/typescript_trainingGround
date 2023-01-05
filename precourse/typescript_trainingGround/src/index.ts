@@ -2,18 +2,16 @@
 
 import { getSystemErrorName } from "util";
 
-function greet(name : string, birthYear: number) : string {
+const greet = (name : string, birthYear: number)  => {
   const age = new Date().getFullYear() - birthYear;
   return `Hello ${name}, you are ${age} years old`;
 }
-function isOld(age : number) : boolean {
-  return age > 34 ;
-}
-function countOdd(array : number[]) : number {
-  return array.filter(x => x % 2 !== 0).length;
-}
+const isOld = (age : number) =>  age > 34 ;
 
-function sumEven(arr : number[]) : number {
+const countOdd = (array : number[]) =>  array.filter(x => x % 2 !== 0).length;
+
+
+const sumEven = (arr : number[]) : number => {
   return arr.filter(even => even % 2 === 0)
   .reduce((a,b) => a + b,0);
 }
@@ -27,9 +25,7 @@ type Person = {
   birthYear : number,
   address : Address,
 };
-function getPersonStreetNo (p : Person) : number {
-  return p.address.streetNo;
-}
+const getPersonStreetNo = (p : Person) => p.address.streetNo;
 
 class PersonC {
   private name : string ='';
@@ -56,10 +52,9 @@ interface Iperson {
   name: string,
   birthYear: number,
 }
-function getPersonNameString(person : Iperson ) : string {
-  return `${person.name}, ${person.birthYear.toString()}`; 
-}
-function printThis(p : Person | undefined |null) {
+const getPersonNameString = (person : Iperson ) =>`${person.name}, ${person.birthYear.toString()}`; 
+
+const printThis = (p : Person | undefined |null) => {
   if(!p){return 'no person supplied'};
   return p.name;
 }
