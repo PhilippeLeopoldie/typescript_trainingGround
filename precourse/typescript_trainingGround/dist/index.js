@@ -1,4 +1,5 @@
 "use strict";
+//import { arrayBuffer } from "stream/consumers";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getPersonStreetNo = exports.sumEven = exports.countOdd = exports.isOld = exports.greet = void 0;
 function greet(name, birthYear) {
@@ -23,12 +24,24 @@ function getPersonStreetNo(p) {
     return p.address.streetNo;
 }
 exports.getPersonStreetNo = getPersonStreetNo;
-class PersonClass {
+class PersonC {
     constructor(name, birthYear) {
         this.name = '';
         this.birthYear = 0;
         this.name = name;
         this.birthYear = birthYear;
     }
+    getName() {
+        return this.name;
+    }
 }
-const p = new PersonClass('Marcus', 1972);
+const p = new PersonC('Marcus', 1972);
+class EmployeeC extends PersonC {
+    constructor() {
+        super(...arguments);
+        this.employeeId = -1;
+    }
+}
+const e = new EmployeeC('marcus employee', 1972);
+console.log(e.getName());
+console.log(e.employeeId);

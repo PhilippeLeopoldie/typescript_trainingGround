@@ -31,7 +31,7 @@ function getPersonStreetNo (p : Person) : number {
   return p.address.streetNo;
 }
 
-class PersonClass {
+class PersonC {
   private name : string ='';
   birthYear: number = 0;
 
@@ -43,10 +43,24 @@ class PersonClass {
     return this.name;
   }
 }
+const p = new PersonC('Marcus',1972);
 
+class EmployeeC extends PersonC {
+  employeeId: number = -1;
+}
+/*const e = new EmployeeC('marcus employee', 1972);
+console.log(e.getName());
+console.log(e.employeeId);*/
 
+interface Iperson {
+  name: string,
+  birthYear: number,
+}
+function getPersonNameString(person : Iperson ) : string {
+  return `${person.name}, ${person.birthYear.toString()}`;
+  
+}
 
-const p = new PersonClass('Marcus',1972);
 
 
 export {
@@ -57,4 +71,8 @@ export {
   Person,
   Address,
   getPersonStreetNo,
+  PersonC,
+  EmployeeC,
+  Iperson,
+  getPersonNameString
 };

@@ -1,7 +1,7 @@
 import 'mocha' ;
 import assert from 'assert';
 
-import { greet, isOld, countOdd, sumEven, Person, Address, getPersonStreetNo } from './index';
+import { greet, isOld, countOdd, sumEven, Person, Address, getPersonStreetNo,PersonC, EmployeeC, Iperson, getPersonNameString } from './index';
 
 describe('ts tests', () => {
   it('get greeting', () => {
@@ -75,5 +75,31 @@ describe('ts tests', () => {
 
       // assert
       assert.strictEqual(streetNo, 23);
+  });
+  it('using classes', () =>{
+    //arrange
+    const p = new PersonC('Marcus', 1972);
+    const e = new EmployeeC('Marcus Employee', 1972);
+
+    // act
+    e.employeeId = 12345;
+
+    // assert
+    assert.strictEqual(p.getName(),'Marcus');
+    assert.strictEqual(e.getName(),'Marcus Employee');
+    assert.strictEqual(e.employeeId, 12345);
+  });
+  it('prints an IPerson',() => {
+    // arrange
+    const p1 : Iperson = {name: 'Marcus', birthYear : 1972};
+    const p2 = {name: 'David', birthYear: 1975, drummer: true};
+
+    // act
+    const p1Address = getPersonNameString(p1);
+    const p2Address = getPersonNameString(p2);
+    
+    // assert
+    assert.strictEqual(p1Address, 'Marcus, 1972');
+    assert.strictEqual(p2Address, 'David, 1975');
   });
 });
